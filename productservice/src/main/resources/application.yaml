@@ -4,6 +4,9 @@ spring:
     driver-class-name: org.h2.Driver
     username: ibm
     password: ibm
-     h2:    console:      enabled: true
+     h2:    console:      enabled: true  application:    name: product-service
       
 server:  port: 8085
+  
+  
+management:  endpoints:    web:      exposure:        include: "*"       
