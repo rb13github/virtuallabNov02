@@ -30,6 +30,17 @@ public class ProductService {
 		return productRepo.findById(id);
 	}
 	
+	public void deleteProduct(Long id)throws Exception {
+		
+		Optional<Product> product=productRepo.findById(id);
+		if(product.isPresent()) {		
+		productRepo.delete(product.get());
+		}else {
+			throw new Exception();
+		}
+		
+	}
+	
 	
 
 }
