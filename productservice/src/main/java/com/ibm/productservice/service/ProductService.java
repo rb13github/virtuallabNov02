@@ -10,6 +10,7 @@ import com.ibm.productservice.dto.ProductDTO;
 import com.ibm.productservice.entity.Product;
 import com.ibm.productservice.repository.ProductRepository;
 import com.ibm.productservice.restclient.TaxClient;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @Service
 public class ProductService {
@@ -47,7 +48,8 @@ public class ProductService {
 		}
 		
 	}
-	
+
+@HystrixCommand(fallbackMethod="taxServiceFallback")
 public ProductDTO getProducts(Long id) {
 		
 		Product product= productRepo.findById(id).get();
@@ -60,6 +62,25 @@ public ProductDTO getProducts(Long id) {
 		
 		return dto;
 	}
+
+public ProductDTO taxServiceFallback(Long id) {
+	
+	Optional<Product> product= productRepo.findById(id);
+	
+	ProductDTO dto=null;
+	
+	if(product.isPresent()) {
+		
+	ProductConverter converter=new ProductConverter();
+		
+		dto=converter.convertToDTO(product.get());
+		
+		dto.setTax(5.0);
+	}
+	
+	return dto;
+	
+}
 	
 	
 	
