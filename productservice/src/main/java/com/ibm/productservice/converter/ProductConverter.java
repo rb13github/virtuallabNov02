@@ -15,5 +15,14 @@ public class ProductConverter {
 		
 		return product;
 	}
+	
+	public ProductDTO convertToDTO(Product entity) {
+		
+		ProductDTO dto=new ProductDTO();
+		dto.setId(entity.getId());
+		dto.setName(entity.getProductName());
+		dto.setQuantity(entity.getQuantity());
+		return dto;
+	}
 
 }

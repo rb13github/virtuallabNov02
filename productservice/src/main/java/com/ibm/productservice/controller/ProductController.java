@@ -60,9 +60,10 @@ public class ProductController {
 	}
 	
 	@GetMapping("/{id}") //localhost:8085/product/1
-	public Product product(@PathVariable(value="id")Long id) {
+	public ResponseEntity<ProductDTO> product(@PathVariable(value="id")Long id) {
 		
-		return productService.getProduct(id).get();
+		ProductDTO dto=productService.getProducts(id);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
 		
 	}
 	

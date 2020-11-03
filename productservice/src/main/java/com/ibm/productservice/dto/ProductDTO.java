@@ -7,6 +7,8 @@ public class ProductDTO {
 	private String name;
 	
 	private Long quantity;
+	
+	private Double tax;
 
 	public Long getId() {
 		return id;
@@ -30,6 +32,14 @@ public class ProductDTO {
 
 	public void setQuantity(Long quantity) {
 		this.quantity = quantity;
+	}
+
+	public Double getTax() {
+		return tax;
+	}
+
+	public void setTax(Double tax) {
+		this.tax = tax;
 	}
 
 }

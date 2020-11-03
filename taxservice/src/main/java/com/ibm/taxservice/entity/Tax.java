@@ -1,17 +1,20 @@
 package com.ibm.taxservice.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="tax")
+
+//@Entity
+//@Table(name="tax")
 public class Tax {
 	
+	//@Id
+	//@GeneratedValue
 	private Long id;
 	
+	//@Column(name="name")
 	private String name;
 	
-	private Double tax;
+	//@Column(name="taxes")
+	private Double taxes;
 
 	public Long getId() {
 		return id;
@@ -29,12 +32,14 @@ public class Tax {
 		this.name = name;
 	}
 
-	public Double getTax() {
-		return tax;
+	public Double getTaxes() {
+		return taxes;
 	}
 
-	public void setTax(Double tax) {
-		this.tax = tax;
+	public void setTaxes(Double taxes) {
+		this.taxes = taxes;
 	}
+
+	
 
 }
