@@ -10,6 +10,6 @@ server:  port: 8088
   
   
 management:  endpoints:    web:      exposure:        include: "*"       
-eureka:  instance:    instance-id: ${spring.application.name}:${server.port}:${random.int}
+eureka:  instance:    instance-id: ${spring.application.name}:${random.int}
     
   client:    service-url:      defaultZone:  http://localhost:8100/eureka
